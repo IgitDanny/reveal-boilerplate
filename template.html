@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>TITLE</title>
+    <meta name="description" content="TITLE">
+    <meta name="author" content="AUTHOR">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="reveal/css/reveal.min.css">
+    <link rel="stylesheet" href="reveal/css/theme/beige.css" id="theme">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="css/monokai.css">
+    <!-- If the query includes 'print-pdf', use the PDF print sheet 
+    <link rel="stylesheet" href="reveal/css/print/pdf.css" type="text/css" media="print">
+    -->
+    <link rel="stylesheet" href="reveal/css/print/paper.css" type="text/css" media="print">
+    <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style>
+            [draggable='true'] {
+              -khtml-user-drag: element;
+              -webkit-user-drag: element;
+              -khtml-user-select: none;
+              -moz-user-select: none;
+              -webkit-user-select: none;
+              user-select: none;
+              display: block;
+            }
+           
+            .drop, .drag {
+                width: 400px;
+                height: 200px;
+                border: 5px dotted #000;
+                border-radius: 10px;
+                margin: 0 auto;
+                position: relative;
+            }
+                .drop:after, .drag:after {
+                    content: "Drop a file";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    text-align: center;
+                    width: 100%;
+                    line-height: 200px;
+                }
+                
+            .drag, .drop2 {
+                display: inline-block;
+                width: 300px;
+                height: 200px;
+            }            
+            .drag:after, .drop2:after {
+                line-height: 200px;
+            }
+          
+            .drop2:after {
+                content: "Drop some data";
+            }
+            .drop3:after {
+                content: "Drop an image";
+            }
+            .drag:after {
+                content: "Drag me";
+            } 
+          
+    </style>
+  </head>
+
+  <body>
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides" >
+        <section>
+            <h1>TITLE</h1>
+        </section>
+
+        <section data-markdown data-state="slide2">
+            ## Another slide
+
+            * this slide
+            * uses markdown
+
+            A paragraph with some text and a [link](http://hakim.se).
+        </section>
+
+        <section>
+            <p class="fragment grow">grow</p>
+            <p class="fragment shrink">shrink</p>
+            <p class="fragment roll-in">roll-in</p>
+            <p class="fragment fade-out">fade-out</p>
+            <p class="fragment highlight-red">highlight-red</p>
+            <p class="fragment highlight-green">highlight-green</p>
+            <p class="fragment highlight-blue">highlight-blue</p>
+        </section>
+
+        <section>
+            <span class="fragment fade-in">
+                <span class="fragment fade-out">I'll fade in, then out</span>
+            </span>
+        </section>
+
+        <section>
+            <p class="fragment" data-fragment-index="3">Appears last</p>
+            <p class="fragment" data-fragment-index="1">Appears first</p>
+            <p class="fragment" data-fragment-index="2">Appears second</p>
+        </section>
+
+        <section>
+            <pre><code data-trim class="css">
+.reveal {
+    font-family: "Lato", sans-serif;
+    font-size: 36px;
+    font-weight: 200;
+    letter-spacing: -0.02em;
+    color: #93a1a1; 
+}
+            </code></pre>
+        </section>
+
+        <section>Single Horizontal Slide</section>
+        <section>
+            <section>Vertical Slide 1</section>
+            <section>Vertical Slide 2</section>
+            <section>
+                <a href="#" class="navigate-left">left</a>
+                <a href="#" class="navigate-right">right</a>
+                <a href="#" class="navigate-up">up</a>
+                <a href="#" class="navigate-down">down</a>
+                <a href="#" class="navigate-prev">prev</a> <!-- Previous vertical or horizontal slide -->
+                <a href="#" class="navigate-next">next</a> <!-- Next vertical or horizontal slide -->
+            </section>
+            <section>Vertical Slide 4</section>
+            <section>Vertical Slide 5</section>
+        </section>
+
+        <section data-transition="zoom">
+            <h2>This slide will override the presentation transition and zoom!</h2>
+        </section>
+
+        <section data-transition-speed="fast">
+            <h2>Choose from three transition speeds: default, fast or slow!</h2>
+        </section>
+
+        <section class="present" style="display: block;">
+            <h1>Dragging</h1>
+            <h2>You can attach data to a drag event</h2>
+            <div class="drag" id="drag" draggable="true"></div>
+            <div class="drop drop2" id="drop"></div>
+        </section>
+
+
+      </div>
+
+    </div>
+
+    <script src="reveal/lib/js/head.min.js"></script>
+    <script src="reveal/js/reveal.min.js"></script>
+
+    <script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    keyboard: true,
+    center: true,
+    loop: true,
+    autoSlide: 0,
+    mouseWheel: true,
+    //rollingLinks: true,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+    // Transition speed
+    transitionSpeed: 'slow', // default/fast/slow
+    //theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    //transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+        { src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: 'reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+        // { src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+    ]
+});
+
+    </script>
+
+    <script>
+/**
+ * Provides requestAnimationFrame in a cross browser way.
+ * @author paulirish / http://paulirish.com/
+ */
+if ( !window.requestAnimationFrame ) {
+    window.requestAnimationFrame = ( function() {
+        return window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
+            window.setTimeout( callback, 1000 / 60 );
+        };
+    } )();
+}
+    </script>
+
+    <script src="js/jquery-2.0.0.min.js"></script>
+    <script src="js/jquery.hammer.min.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/async.js"></script>
+
+    <script>
+$(function(){
+Reveal.addEventListener( 'ready', function( readyEvent ) {
+    
+    // will start at slide referenced by the location hash
+    var current = readyEvent.currentSlide;
+
+    // Other Hammer events
+    // <li>touch</li>
+    // <li>release</li>
+    // <li>hold</li>
+    // <li>doubletap</li>
+    // <li>dragstart</li>
+    // <li>drag</li>
+    // <li>dragend</li>
+    // <li>swipe</li>
+    // <li>transformstart</li>
+    // <li>transform</li>
+    // <li>transformend</li>
+    // <li>rotate</li>
+    // <li>pinch</li>
+    // <li>pinchin</li>
+    // <li>pinchout</li>
+
+    // Navigation
+        // Reveal.slide( indexh, indexv, indexf );
+        // Reveal.left();
+        // Reveal.right();
+        // Reveal.up();
+        // Reveal.down();
+        // Reveal.prev();
+        // 
+        // Reveal.prevFragment();
+        // Reveal.nextFragment();
+        // Reveal.toggleOverview();
+
+    // Retrieves the previous and current slide elements
+        // Reveal.getPreviousSlide();
+        // Reveal.getCurrentSlide();
+        // Reveal.getIndices(); // { h: 0, v: 0 } }
+
+    // Tablet Event Handlers
+    $('.reveal').hammer({ 
+        drag_max_touches:0, 
+        drag_lock_to_axis: true,
+        drag_min_distance: 10,
+        prevent_default: true,
+        show_touches: true,
+        swipe_max_touches: 0,
+        swipe_velocity: 0.7,
+        transform: false,
+        touch: false
+    }).on("swipe", function(tapEvent) {
+        switch(tapEvent.direction){
+            case 'right': Reveal.right(); break;
+            case 'left': Reveal.left(); break;
+            case 'up': Reveal.up(); break;
+            case 'down': Reveal.down(); break;
+        }
+    });
+
+   
+    // Generic Slide handler
+    Reveal.addEventListener( 'slidechanged', function( changeEvent ) {
+        // changeEvent.previousSlide, changeEvent.currentSlide, 
+        // changeEvent.indexh, changeEvent.indexv
+        var current = changeEvent.currentSlide;
+        switch(current){
+            default: console.log('Change: '+ current); break;
+        }
+    });
+        
+
+    Reveal.addEventListener( 'slide2', function() {
+        console.log('State: slide2');
+        setTimeout(Reveal.right, 1000)
+    }, false );
+
+    // Unfinished Drag & Drop File Reader Example
+        // body.addEventListener("dragover", function(e) { e.preventDefault(); }, false);
+        //     body.addEventListener("dragenter", function(e) { e.preventDefault(); }, false);
+        //     body.addEventListener("drop", function(e) { 
+        //         var files = e.dataTransfer.files,
+        //             // This is used to load files into memory
+        //             reader = new FileReader();
+                
+        //         if(e.target.id === "filename") {
+        //             alert("File name: " + files[0].name);
+        //         } else if(e.target.id === "dataurl") {
+        //             // FileReader is async so we attach a listener
+        //             reader.onloadend = function(e) {
+        //                 var img = document.createElement("img");
+
+        //                 img.width = "350";
+        //                 img.src = e.target.result;
+
+        //                 dataurl.appendChild(img);
+        //             };
+
+        //             // Get file and turn it into a base64 string
+        //             reader.readAsDataURL(files[0]);
+        //         }
+
+        //         e.preventDefault();
+        //     }, false);
+
+    /* Dragging */
+    var drag = document.getElementById("drag"),
+        drop = document.getElementById("drop");
+
+    drop.addEventListener("dragover", function(e) { e.preventDefault(); }, false);
+    drop.addEventListener("dragenter", function(e) { e.preventDefault(); }, false);
+    drop.addEventListener("drop", function(e) { 
+        var dt = e.dataTransfer,
+            // IE doesn't like anything other than "Text"
+            data = dt.getData( /*@cc_on!@*/0 ? "Text" : "text/plain" );
+        
+        alert(data);
+
+        e.preventDefault();
+    }, false);
+
+    drag.addEventListener("dragstart", function(e) {
+        var dt = e.dataTransfer,
+            // IE doesn't like anything other than "Text"
+            data = dt.setData( /*@cc_on!@*/0 ? "Text" : "text/plain", "Melbourne Geek, W00t! \\o/" );
+    }, false);
+
+    // /* Dragging */
+    // var dragout = document.getElementById("dragout");
+
+    // dragout.addEventListener("dragstart", function(e) {
+    //     var dt = e.dataTransfer,
+    //         file = e.target.getAttribute("data-downloadurl");
+            
+    //         data = dt.setData( "DownloadURL", file );
+    // }, false);
+});
+});
+    </script>
+  </body>
+</html>
