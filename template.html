@@ -84,12 +84,15 @@
         </section>
 
         <section data-markdown data-state="slide2">
-            ## Another slide
+            <h2> Another slide</h2>
 
-            * this slide
-            * uses markdown
+            <ul>
+                <li> this has a setTimeout</li>
+                <li> it uses markdown</li>
+            </ul>
+            
+            <p>Here is a paragraph with some text and a [link](http://google.com).</p>
 
-            A paragraph with some text and a [link](http://hakim.se).
         </section>
 
         <section>
@@ -103,27 +106,17 @@
         </section>
 
         <section>
+            <h2>Fades</h2>
             <span class="fragment fade-in">
                 <span class="fragment fade-out">I'll fade in, then out</span>
             </span>
         </section>
 
         <section>
+            <h2>appear in sequence</h2>
             <p class="fragment" data-fragment-index="3">Appears last</p>
             <p class="fragment" data-fragment-index="1">Appears first</p>
             <p class="fragment" data-fragment-index="2">Appears second</p>
-        </section>
-
-        <section>
-            <pre><code data-trim class="css">
-.reveal {
-    font-family: "Lato", sans-serif;
-    font-size: 36px;
-    font-weight: 200;
-    letter-spacing: -0.02em;
-    color: #93a1a1; 
-}
-            </code></pre>
         </section>
 
         <section>Single Horizontal Slide</section>
@@ -165,9 +158,9 @@
     <script src="js/frame.js"></script>
     <script>
 (function(){
-    var current;
+    var current = window.current = null;
 
-    Frame.debug = 3;
+    Frame.debug = 5;
 
     Frame(function(done){
        /**
@@ -209,47 +202,17 @@
         done();
     });
 
-
     Frame("reveal/lib/js/head.min.js");
     Frame("reveal/js/reveal.min.js");
+
     Frame(function(done){
-
-        // Full list of configuration options available here:
-        // https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            keyboard: true,
-            center: true,
-            loop: true,
-            autoSlide: 0,
-            mouseWheel: true,
-            //rollingLinks: true,
-
-            // Transition style
-            transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
-            // Transition speed
-            transitionSpeed: 'slow', // default/fast/slow
-            //theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-            //transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
-
-            // Optional libraries used to extend on reveal.js
-            dependencies: [
-                { src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-                { src: 'reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                { src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                { src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-                // { src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-                // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-            ]
-        });
-        Reveal.addEventListener( 'ready', function( readyEvent ) {
-             // will start at slide referenced by the location hash
+        console.log(Reveal)
+        Reveal.addEventListener('ready', function( readyEvent ) {
+            // will start at slide referenced by the location hash
             current = readyEvent.currentSlide;
-            done();
+            console.log('ready');
         });
+        done();
     });
 
     Frame(function(done){
@@ -274,24 +237,22 @@
             }
         });
 
-       
         // Generic Slide handler
-        Reveal.addEventListener( 'slidechanged', function( changeEvent ) {
+        Reveal.addEventListener('slidechanged', function( changeEvent ) {
             // changeEvent.previousSlide, changeEvent.currentSlide, 
             // changeEvent.indexh, changeEvent.indexv
             var current = changeEvent.currentSlide;
             switch(current){
-                default: console.log('Change: '+ current); break;
+                default: console.log('Change: '+current); break;
             }
-        });
-            
+        });      
 
         Reveal.addEventListener( 'slide2', function() {
             console.log('State: slide2');
-            setTimeout(Reveal.right, 1000)
+            setTimeout(Reveal.right, 1000);
         }, false );
         
-       done();
+        done();
     });    
 
     Frame(function(done){
@@ -320,6 +281,45 @@
         done();
     });
        
+
+    Frame(function(done){
+        
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            keyboard: true,
+            center: true,
+            loop: true,
+            autoSlide: 0,
+            mouseWheel: true,
+            //rollingLinks: true,
+
+            // Transition style
+            transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+            // Transition speed
+            transitionSpeed: 'slow', // default/fast/slow
+            //theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+            //transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                //{ src: 'reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                //{ src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                //{ src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                // { src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+            ]
+        });
+       
+        done();
+    });
+
+
     Frame.start();
 })();
     </script>
